@@ -1,6 +1,6 @@
 import { Separator } from "./components/ui/separator"
 import { Button } from "./components/ui/button"
-import { FileVideo, Github, Upload, Wand2 } from 'lucide-react'
+import { FileVideo, Github, Upload, Wand2, Computer } from 'lucide-react'
 import { Textarea } from "./components/ui/textarea"
 import { Label } from "./components/ui/label"
 import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "./components/ui/select"
@@ -9,21 +9,30 @@ import { Slider } from "./components/ui/slider"
 function App() {
   return (
     <div className="min-h-screen flex flex-col" >
-      <div className="px-6 py-3 flex items-center justify-between border-b">
+
+      <header className="px-6 py-3 flex items-center justify-between border-b">
+
         <h1 className="text-xl font-bold">Upload.ai</h1>
+      
+        <h1 className="text-xl font-bold flex items-center">
+          <Computer 
+            className="w-4 h-4 mr-2"
+          />
+          PHCA.dev
+        </h1>
+
         <div className="flex items-center gap-3">
           <span className="text-sm text-muted-foreground">
-            Desenvolvido com 💛 no NLW/Rockeseat por PHCA-dev 
+            Desenvolvido com 💛 no NLW/Rockeseat por PHCA.dev 
           </span>
-
           <Separator orientation="vertical" className="h-6" />
-
           <Button variant="secondary">
             <Github className="w-4 h-4 mr-2" />
             GitHub
           </Button>
         </div>
-      </div>
+      
+      </header>
       
       <main className="flex-1 p-6 flex gap-6">
         <div className="flex flex-col flex-1 gap-4">
@@ -70,12 +79,24 @@ function App() {
               Carregar video
               <Upload className="w-4 h4 ml-2" />
             </Button>
-
           </form>
 
           <Separator />
 
           <form className="space-y-6">
+          <div className="space-y-2">
+              <Label>Prompt</Label>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecione um prompt..." />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="title">Título do Youtube</SelectItem>
+                  <SelectItem value="description">Descrição do Youtube</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
             <div className="space-y-2">
               <Label>Modelo</Label>
               <Select disabled defaultValue="gpt3.5">
@@ -95,7 +116,7 @@ function App() {
               <Slider 
                 min={0}
                 max={1}
-                step={0.1}
+                step={0.05}
               />
 
               <span className="block text-xs text-muted-foreground italic">
