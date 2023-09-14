@@ -1,10 +1,10 @@
 import { Separator } from "./components/ui/separator"
 import { Button } from "./components/ui/button"
-import { FileVideo, Github, Upload, Wand2, Computer } from 'lucide-react'
 import { Textarea } from "./components/ui/textarea"
 import { Label } from "./components/ui/label"
-import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "./components/ui/select"
 import { Slider } from "./components/ui/slider"
+import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "./components/ui/select"
+import { FileVideo, Github, Upload, Wand2, Computer } from 'lucide-react'
 
 function App() {
   return (
@@ -52,6 +52,7 @@ function App() {
             Lembre-se: Você pode utilizar a variavel <code className="text-violet-400">{'{transcription}'}</code> no seu prompt para adicionar o conteudo da transcrição do video selecionado
           </p>
         </div>
+
         <aside className="w-80 space-y-6">
           <form className="space-y-6">
             <label 
@@ -84,56 +85,57 @@ function App() {
           <Separator />
 
           <form className="space-y-6">
-          <div className="space-y-2">
-              <Label>Prompt</Label>
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Selecione um prompt..." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="title">Título do Youtube</SelectItem>
-                  <SelectItem value="description">Descrição do Youtube</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
             <div className="space-y-2">
-              <Label>Modelo</Label>
-              <Select disabled defaultValue="gpt3.5">
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="gpt3.5">GPT 3.5-turbo 16k</SelectItem>
-                </SelectContent>
-              </Select>
-              <span className="block text-xs text-muted-foreground italic">Você poderá costumizar essa opção em breve.</span>
-            </div>
+                <Label>Prompt</Label>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione um prompt..." />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="title">Título do Youtube</SelectItem>
+                    <SelectItem value="description">Descrição do Youtube</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-            <Separator />
+              <div className="space-y-2">
+                <Label>Modelo</Label>
+                <Select disabled defaultValue="gpt3.5">
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="gpt3.5">GPT 3.5-turbo 16k</SelectItem>
+                  </SelectContent>
+                </Select>
+                <span className="block text-xs text-muted-foreground italic">Você poderá costumizar essa opção em breve.</span>
+              </div>
 
-            <div className="space-y-2">
-              <Slider 
-                min={0}
-                max={1}
-                step={0.05}
-              />
+              <Separator />
 
-              <span className="block text-xs text-muted-foreground italic">
-                Valores mais altos tendem a deixar o resultado mais criativo e com mais erros
-              </span>
-            </div>
+              <div className="space-y-2">
+                <Slider 
+                  min={0}
+                  max={1}
+                  step={0.05}
+                />
 
-            <Separator />
+                <span className="block text-xs text-muted-foreground italic">
+                  Valores mais altos tendem a deixar o resultado mais criativo e com mais erros
+                </span>
+              </div>
 
-            <Button type="submit" className="w-full">
-              Executar
-              <Wand2 className="w-4 ml-2" />
-            </Button>
+              <Separator />
+
+              <Button type="submit" className="w-full">
+                Executar
+                <Wand2 className="w-4 ml-2" />
+              </Button>
           </form>
-        </aside>
-      </main>
 
+        </aside>
+
+      </main>
 
     </div>
   )
