@@ -1,3 +1,3 @@
 # upload-ai-web
 
-## Desenvolvido usando 
+## Frontend desenvolvido usando TypeScript, React.js, Shadcn/UI, Radix/UI, TailwindCSS
