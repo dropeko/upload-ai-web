@@ -6,8 +6,18 @@ import { Slider } from "./components/ui/slider"
 import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "./components/ui/select"
 import { Github, Wand2, Computer } from 'lucide-react'
 import { VideoInputForm } from "./components/video-input-form.tsx"
+import { PrompSelect } from "./components/prompt-select.tsx"
+import { useState } from "react"
 
 function App() {
+  const [temperature, setTemperature] = useState(0.5)
+  const [videoId, setVideoId] = useState<string | null>(null)
+
+  function handlePromptSelected(template: string) {
+    console.log(template);
+    
+  } 
+
   return (
     <div className="min-h-screen flex flex-col" >
 
@@ -56,23 +66,18 @@ function App() {
 
         <aside className="w-80 space-y-6">
 
-          <VideoInputForm />
-
+          <VideoInputForm
+            onVideoUploaded={setVideoId}
+          />
 
           <Separator />
 
           <form className="space-y-6">
             <div className="space-y-2">
                 <Label>Prompt</Label>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecione um prompt..." />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="title">Título do Youtube</SelectItem>
-                    <SelectItem value="description">Descrição do Youtube</SelectItem>
-                  </SelectContent>
-                </Select>
+
+                <PrompSelect onPromptSelected={handlePromptSelected} />
+
               </div>
 
               <div className="space-y-2">
@@ -95,6 +100,8 @@ function App() {
                   min={0}
                   max={1}
                   step={0.05}
+                  value={[temperature]}
+                  onValueChange={value => setTemperature(value[0])}
                 />
 
                 <span className="block text-xs text-muted-foreground italic">
